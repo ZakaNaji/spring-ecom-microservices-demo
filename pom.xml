@@ -12,6 +12,7 @@
 
     <module>config-server</module>
       <module>discovery-server</module>
+    <module>customer-service</module>
   </modules>
 
   <properties>
