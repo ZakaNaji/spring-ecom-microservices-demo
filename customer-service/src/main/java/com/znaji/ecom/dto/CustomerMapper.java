@@ -37,6 +37,14 @@ public final class CustomerMapper {
         return a;
     }
 
+    public static void applyUpdate(Customer c, UpdateCustomerRequest req) {
+        c.setFirstName(req.firstName());
+        c.setLastName(req.lastName());
+        c.setEmail(req.email());
+        c.setPhone(req.phone());
+        c.setAddress(toAddress(req.address()));
+    }
+
     private static AddressDto toDto(Address a) {
         if (a == null) return null;
         return new AddressDto(a.getStreet(), a.getCity(), a.getZip(), a.getCountry());
