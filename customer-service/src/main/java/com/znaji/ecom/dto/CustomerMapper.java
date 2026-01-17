@@ -1,5 +1,6 @@
 package com.znaji.ecom.dto;
 
+import com.znaji.ecom.model.Address;
 import com.znaji.ecom.model.Customer;
 
 public final class CustomerMapper {
@@ -11,6 +12,7 @@ public final class CustomerMapper {
         c.setLastName(req.lastName());
         c.setEmail(req.email());
         c.setPhone(req.phone());
+        c.setAddress(toAddress(req.address()));
         return c;
     }
 
@@ -20,7 +22,23 @@ public final class CustomerMapper {
                 c.getFirstName(),
                 c.getLastName(),
                 c.getEmail(),
-                c.getPhone()
+                c.getPhone(),
+                toDto(c.getAddress())
         );
+    }
+
+    private static Address toAddress(AddressDto dto) {
+        if (dto == null) return null;
+        Address a = new Address();
+        a.setStreet(dto.street());
+        a.setCity(dto.city());
+        a.setZip(dto.zip());
+        a.setCountry(dto.country());
+        return a;
+    }
+
+    private static AddressDto toDto(Address a) {
+        if (a == null) return null;
+        return new AddressDto(a.getStreet(), a.getCity(), a.getZip(), a.getCountry());
     }
 }
