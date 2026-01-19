@@ -13,6 +13,7 @@
     <module>config-server</module>
       <module>discovery-server</module>
     <module>customer-service</module>
+      <module>product-service</module>
   </modules>
 
   <properties>
